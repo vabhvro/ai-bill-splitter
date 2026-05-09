@@ -1,0 +1,25 @@
+{
+  "name": "ai-bill-splitter-backend",
+  "version": "1.0.0",
+  "description": "AI Automated Bill Splitter - Backend API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "axios": "^1.16.0",
+    "better-sqlite3": "*",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1",
+    "node-fetch": "*",
+    "nodemailer": "^8.0.7",
+    "tesseract.js": "^5.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

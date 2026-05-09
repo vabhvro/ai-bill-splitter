@@ -1,0 +1,10 @@
+node_modules
+.env
+.env.*
+.DS_Store
+uploads/
+eng.traineddata
+backend/data/history.json
+frontend/build/
+build/
+dist/
