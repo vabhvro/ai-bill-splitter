@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://ai-bill-splitter-orcin.vercel.app/api",
 });
 
 export const scanBill = (formData) =>
