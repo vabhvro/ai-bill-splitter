@@ -1,7 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
-const historyFile = path.join(__dirname, '../data/history.json');
+const isVercel = process.env.VERCEL === "1";
+const historyFile = isVercel 
+  ? "/tmp/history.json" 
+  : path.join(__dirname, '../data/history.json');
 
 const readHistory = () => {
   try {
