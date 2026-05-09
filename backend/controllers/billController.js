@@ -5,10 +5,12 @@ async function uploadBill(req, res) {
 
   try {
 
-    const imagePath = req.file.path;
+    if (!req.file) {
+      return res.status(400).json({ success: false, message: "No file uploaded" });
+    }
 
-    // Read image as base64 to pass to Vision AI
-    const imageBase64 = fs.readFileSync(imagePath, { encoding: 'base64' });
+    // Read image as base64 to pass to Vision AI directly from memory buffer
+    const imageBase64 = req.file.buffer.toString('base64');
     const mimeType = req.file.mimetype || 'image/jpeg';
 
     const apiKey = process.env.OPENROUTER_API_KEY;

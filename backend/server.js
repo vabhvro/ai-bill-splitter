@@ -36,3 +36,6 @@ app.listen(PORT, () => {
   console.log(`\n🚀 Server running on http://localhost:${PORT}`);
   console.log(`📡 API health: http://localhost:${PORT}/api/health\n`);
 });
+
+// Export the Express API for Vercel
+module.exports = app;

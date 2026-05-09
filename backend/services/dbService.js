@@ -2,11 +2,18 @@ const path = require("path");
 const fs = require("fs");
 
 // Use a simple JSON file as database (no native build needed)
-const DB_PATH = path.join(__dirname, "../data/history.json");
+// On Vercel, only /tmp is writable.
+const isVercel = process.env.VERCEL === "1";
+const DB_PATH = isVercel 
+  ? "/tmp/history.json" 
+  : path.join(__dirname, "../data/history.json");
 
-// Ensure data directory exists
-const dataDir = path.join(__dirname, "../data");
-if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
+// Ensure data directory exists if not on Vercel
+if (!isVercel) {
+  const dataDir = path.join(__dirname, "../data");
+  if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
+}
+
 if (!fs.existsSync(DB_PATH)) fs.writeFileSync(DB_PATH, JSON.stringify([]));
 
 function readDB() {
